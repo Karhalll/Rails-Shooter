@@ -3,35 +3,39 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityStandardAssets.CrossPlatformInput;
 
-public class Player : MonoBehaviour
+public class PlayerController : MonoBehaviour
 {
+    [Header("General")]
     [Tooltip("In m^-1")]
-    [SerializeField] float xSpeed = 10f;
+    [SerializeField] float controlSpeed = 10f;
     [Tooltip("In m")]
-    [SerializeField] float xRange = 6.3f;
-    [Tooltip("In m^-1")]
-    [SerializeField] float ySpeed = 10f;
+    [SerializeField] float xRange = 6f;
     [Tooltip("In m")]
     [SerializeField] float yRange = 4f;
 
-    [SerializeField] float positionPitchFactor = -2f;
-    [SerializeField] float controlPitchFactor = -20f;
+    [Header("Screen-position Based")]
+    [SerializeField] float positionPitchFactor = -4f;
+    [SerializeField] float positionYawFactor = 6f;
 
-    [SerializeField] float positionYawFactor = 2f;
-
-    [SerializeField] float controlRollFactor = -20f;
+    [Header("Controll-throw Based")]
+    [SerializeField] float controlPitchFactor = -30f;
+    [SerializeField] float controlRollFactor = -30f;
 
     float xThrow, yThrow;
-
-    void Start()
-    {
-        
-    }
+    bool isControlEnabled = true;
 
     void Update()
     {
-        ProcessTranslation();
-        ProcessRotation();
+        if (isControlEnabled)
+        {
+            ProcessTranslation();
+            ProcessRotation();
+        }
+    }
+
+    private void OnPlayerDeath() //Caled by string refence
+    {
+        isControlEnabled = false;
     }
 
     private void ProcessRotation()
@@ -53,8 +57,8 @@ public class Player : MonoBehaviour
         yThrow = CrossPlatformInputManager.GetAxis("Vertical");
 
         transform.localPosition = new Vector3(
-            AxisClampedMovement(transform.localPosition.x, xThrow, xSpeed, xRange),
-            AxisClampedMovement(transform.localPosition.y, yThrow, ySpeed, yRange),
+            AxisClampedMovement(transform.localPosition.x, xThrow, xRange),
+            AxisClampedMovement(transform.localPosition.y, yThrow, yRange),
             transform.localPosition.z);
     }
 
@@ -63,9 +67,9 @@ public class Player : MonoBehaviour
     /// </summary>
     /// <param name="localPos">Targeted axis.</param>
     /// <param name="Throw">Throw from player input.</param>
-    private float AxisClampedMovement(float localPos, float Throw, float Speed, float Range)
+    private float AxisClampedMovement(float localPos, float Throw, float Range)
     {
-        float Offset = Throw * Speed * Time.deltaTime;
+        float Offset = Throw * controlSpeed * Time.deltaTime;
 
         float rawPos = localPos + Offset;
         float clampedPos = Mathf.Clamp(rawPos, -Range, Range);
