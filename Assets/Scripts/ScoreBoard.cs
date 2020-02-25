@@ -20,7 +20,7 @@ public class ScoreBoard : MonoBehaviour
 
     private void UpdateScore()
     {
-        scoreText.text = score.ToString("### ### ###");
+        scoreText.text = score.ToString("### ##0");
     }
 
     public void ScoreHit(int scorePerHit)

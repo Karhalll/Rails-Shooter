@@ -93,3 +93,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deathFX: {fileID: 4937592504146248231, guid: b5b00d1f141bbe6488dca850aa96813b, type: 3}
+  parent: {fileID: 0}
+  scorePerHit: 25
+  hits: 4
