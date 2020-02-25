@@ -130,6 +130,9 @@ MonoBehaviour:
   controlSpeed: 10
   xRange: 6
   yRange: 4
+  guns:
+  - {fileID: 293204510}
+  - {fileID: 5454742340078315941}
   positionPitchFactor: -4
   positionYawFactor: 6
   controlPitchFactor: -30
@@ -213,10 +216,16 @@ PrefabInstance:
     - target: {fileID: 5454742342196116046, guid: 967a97d7523efb543a5a3a2b2841465d,
         type: 3}
       propertyPath: m_Name
-      value: Bullets (1)
+      value: Gun Right
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 967a97d7523efb543a5a3a2b2841465d, type: 3}
+--- !u!1 &5454742340078315941 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5454742342196116046, guid: 967a97d7523efb543a5a3a2b2841465d,
+    type: 3}
+  m_PrefabInstance: {fileID: 2118587371}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5454742340078315938 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5454742342196116041, guid: 967a97d7523efb543a5a3a2b2841465d,
@@ -288,10 +297,16 @@ PrefabInstance:
     - target: {fileID: 5454742342196116046, guid: 967a97d7523efb543a5a3a2b2841465d,
         type: 3}
       propertyPath: m_Name
-      value: Bullets
+      value: Gun Left
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 967a97d7523efb543a5a3a2b2841465d, type: 3}
+--- !u!1 &293204510 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5454742342196116046, guid: 967a97d7523efb543a5a3a2b2841465d,
+    type: 3}
+  m_PrefabInstance: {fileID: 5454742341906090064}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &293204505 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5454742342196116041, guid: 967a97d7523efb543a5a3a2b2841465d,
